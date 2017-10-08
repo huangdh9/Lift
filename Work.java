@@ -1,64 +1,9 @@
-package elevator;
-import java.util.*;
-/* 单线程电梯（1台电梯运行,10层）模拟：
- *  ArrayList up = new ArrayList;	want=1 向上去的人所在队列
-	ArrayList down = new ArrayList;	want=-1 向下去的人所在队列
-	Pass 乘客：
-		at:所在楼层
-		to:目的楼层
-		want:1表示向上去，-1表示向下去
-		key：乘客编号
- */
+package Test;
 
-public class Test {
-	public static void main(String[]args){
-		ArrayList<Pass> up = new ArrayList<Pass>();  // 向上的人的队列
-        ArrayList<Pass> down = new ArrayList<Pass>(); // 向下的人的队列
-        
-        Work work = new Work(up,down,0);  
-		
-        
-		for (int i=0;i<20;i++){  
-            while(true){  
-                int at=(int)(Math.random()*10+1);  
-                int to=(int)(Math.random()*10+1);  
-                if(at<to&&to!=0&&at!=0){  
-                    Pass pass= new Pass(at,to,i,1);  
-                    up.add(pass);  
-                    break;  
-                }else if(at>to&&to!=0&&at!=0){  
-                    Pass pass= new Pass(at,to,i,-1);  
-                    down.add(pass);                      
-                    break;  
-                }       
-            }  
-            
-	    }
-		 work.run();
-	}	
-}
-	
-class Pass {// 乘客
-	int at;// 所在的楼层
-	int to;// 要去的楼层
-	int key;// 乘客编号
-	int want;// 1表示上，-1表示下
-	public Pass(int at, int to, int key, int want)
-	{
-		this.at=at;
-		this.to=to;
-		this.key=key;
-		this.want=want;
-	}
-	public int get_to(){
-		return to;
-	}
-	public int get_at(){
-		return at;
-	}
-}
+import java.util.ArrayList;
 
-class Work { 
+
+public class Work { 
 	int work;// 表示工作状态，1为向上，-1为向下
 	int stay;// 当前楼层
 	boolean dooropen;
@@ -253,10 +198,6 @@ class Work {
 	   int weight=(int)(Math.random()*1500);       
 	  }   
   }  
-
-
-
-
 
 
 
